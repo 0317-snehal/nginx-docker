@@ -21,12 +21,15 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build -t my-nginx-image .
+        docker build -t nginx-docker .
+
+    - name: Tag Docker image
+      run: |
+        docker tag nginx-docker ${{ secrets.DOCKER_USERNAME }}/nginx-docker:latest
 
     - name: Push Docker image to Docker Hub
       run: |
-        docker tag my-nginx-image mydockerhubusername/my-nginx-image:latest
-        docker push mydockerhubusername/my-nginx-image:latest
+        docker push ${{ secrets.DOCKER_USERNAME }}/nginx-docker:latest
 
   deploy:
     needs: build
@@ -34,4 +37,4 @@ jobs:
     steps:
     - name: Deploy Docker container (example for remote server)
       run: |
-        ssh user@your-server "docker run -d -p 80:80 --name my-nginx-container my-nginx-image"
+        ssh user@your-server "docker pull ${{ secrets.DOCKER_USERNAME }}/nginx-docker:latest && docker run -d -p 80:80 --name nginx-container ${{ secrets.DOCKER_USERNAME }}/nginx-docker:latest"
