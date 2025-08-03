@@ -4,8 +4,7 @@
     <title>
         TASK 2: LANDING PAGE
     </title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    
 </head>
         <div class="navbar-mainsocials">
             <a href="https://www.linkedin.com/in/snehal shirkande-here/">
