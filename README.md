@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 
 <head>
-    <title>
         TASK 2: LANDING PAGE
-    </title>
     
 </head>
         <div class="navbar-mainsocials">
